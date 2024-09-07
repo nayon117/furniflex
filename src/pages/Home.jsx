@@ -1,9 +1,10 @@
+import ProductList from "../components/ProductList";
 
 const Home = () => {
-    return (
-        <div className=''>
-                Welcome to Home
-        </div>
-    )
-}
+  return (
+    <div className="">
+      <ProductList />
+    </div>
+  );
+};
 export default Home;
