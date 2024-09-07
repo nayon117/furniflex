@@ -52,7 +52,7 @@ const Navbar = () => {
               to={item.route}
               className="flex items-center justify-start gap-4 bg-transparent md:p-2"
             >
-              <p className="text-sm font-medium text-black">{item.label}</p>
+              <p className="text-lg font-medium text-black">{item.label}</p>
             </Link>
           ))}
         </div>
@@ -140,7 +140,7 @@ const Navbar = () => {
             <button
               onClick={() => {
                 logOut();
-                setIsMobileMenuOpen(false); // Close menu on click
+                setIsMobileMenuOpen(false); 
               }}
               className="flex items-center gap-1 mt-2"
             >

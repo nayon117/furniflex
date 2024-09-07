@@ -9,13 +9,16 @@ import useAuth from "../hooks/useAuth";
 import { FaApple } from 'react-icons/fa';
 
 const SignUp = () => {
+
   const navigate = useNavigate();
   const { createUser, signInWithGoogle, loading } = useAuth() || {};
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [showPassword, setShowPassword] = useState(false);
 
+  // Toggle password visibility
   const togglePasswordVisibility = () => setShowPassword(prev => !prev);
 
+  // Handle form submission
   const onSubmit = async (data) => {
     try {
       await createUser(data.email, data.password);
@@ -27,6 +30,7 @@ const SignUp = () => {
     }
   };
 
+  // Handle Google login
   const handleGoogleLogin = async () => {
     try {
       await signInWithGoogle();

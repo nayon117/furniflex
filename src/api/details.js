@@ -1,14 +1,6 @@
 import axiosPublic from "."
 
-
-// export const createPaymentIntent = async (price) => {
-  
-//     const { data } = await axiosPublic.post('/create-payment-intent', price)
-//     return data
-// }
-
-
-// Example of creating a payment intent
+//  creating a payment intent
 export const createPaymentIntent = async (itemInfo) => {
   const response = await axiosPublic.post('/create-payment-intent', {
     price: itemInfo.price

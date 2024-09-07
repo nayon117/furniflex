@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const PaymentSucess = () => {
   const cart = useCart();
 
+  // Clear cart after successful payment
   useEffect(() => {
     cart.clearCart();
   }, [cart]);

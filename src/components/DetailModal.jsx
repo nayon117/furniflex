@@ -7,11 +7,9 @@ import CheckoutForm from "../form/CheckoutForm";
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK);
 
 const DetailModal = ({ closeModal, isOpen, itemInfo }) => {
-  console.log("item from detail modal", itemInfo);
-
-  // Ensure itemInfo is an array and contains valid data
+ 
   const totalAmount = itemInfo.reduce((sum, item) => {
-    const itemPrice = parseFloat(item.price) || 0; // Ensure price is a number
+    const itemPrice = parseFloat(item.price) || 0; 
     const itemQuantity = item.quantity || 1; // Default to 1 if quantity is missing
     return sum + itemPrice * itemQuantity;
   }, 0);

@@ -3,9 +3,11 @@ import { RiShoppingBasketLine } from "react-icons/ri";
 import useCart from "../hooks/useCart";
 
 const ProductList = () => {
+
   const [products, setProducts] = useState([]);
   const cart = useCart();
 
+  // fetch data from db.json
   useEffect(() => {
     fetch("/db.json")
       .then((response) => response.json())

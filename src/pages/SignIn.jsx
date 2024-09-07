@@ -18,6 +18,7 @@ const SignIn = () => {
 
   const togglePasswordVisibility = () => setShowPassword(prev => !prev);
 
+  // Handle form submission
   const onSubmit = async (data) => {
     try {
       await signIn(data.email, data.password);

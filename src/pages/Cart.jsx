@@ -28,7 +28,7 @@ const Cart = () => {
         image: item.image || "",
         description: item.description || "",
         productId: item.id || "",
-        quantity: item.quantity || 1,  // Ensure quantity is included
+        quantity: item.quantity || 1,  
       }));
   
       setItemInfo(itemsInfo);
