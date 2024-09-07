@@ -4,42 +4,42 @@
     "image": "https://i.ibb.co.com/n7yDrM0/Image-1.png",
     "title": "Recliner Chair Wood",
     "description": "It has a backrest that can be tilted back, and often a footrest extended",
-    "price": "200"
+    "price": 200
   },
   {
     "id": 2,
     "image": "https://i.ibb.co.com/C9n4TDz/rocking-chair-with-padded-seat-1.png",
     "title": "Timber Ride Padded",
     "description": "High Back Rocking Side Pocket Portable Folding Outdoor Camping Chairs ",
-    "price": "100"
+    "price": 100
   },
   {
     "id": 3,
     "image": "https://i.ibb.co.com/t4BkJyg/image-148.png",
     "title": "Colored Wooden Chair",
     "description": "It has a backrest that can be tilted back, and often a footrest extended",
-    "price": "150"
+    "price": 150
   },
   {
     "id": 4,
     "image": "https://i.ibb.co.com/FbFCqkj/Image.png",
     "title": "Blank Bamboo Wicker",
     "description": "Lightweight, easy to clean, sturdy, safe and stable. Non-slip legs",
-    "price": "466"
+    "price": 466
   },
   {
     "id": 5,
     "image": "https://i.ibb.co.com/1s0dqmK/image-149.png",
     "title": "Isolated Wooden Rock",
     "description": "It has a backrest that can be tilted back, and often a footrest extended",
-    "price": "445"
+    "price": 445
   },
   {
     "id": 6,
     "image": "https://i.ibb.co.com/Z1qR1f0/image-146.png",
     "title": "Minimal Empty Rocking",
     "description": "A seat, especially for one person, usually having four legs for support.",
-    "price": "454"
+    "price": 454
   }
 ]
 

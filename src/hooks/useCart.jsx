@@ -10,7 +10,7 @@ const useCart = create(
 
       // Function to add an item to the cart
       addItem: (data) => {
-        const { id, title, image, price,description } = data;
+        const { id, title, image,description, price } = data;
         const currentItems = get().cartItems;
         const isExisting = currentItems.find((cartItem) => cartItem.id === id);
 

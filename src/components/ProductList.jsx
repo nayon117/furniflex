@@ -12,7 +12,6 @@ const ProductList = () => {
       .then((data) => setProducts(data));
   }, []);
 
-  console.log(products);
 
   return (
     <div className="py-16">
@@ -46,8 +45,8 @@ const ProductList = () => {
                       title,
                       price,
                       quantity: 1,
+                      description,
                       image,
-                      description
                     });
                   }}
                   className="rounded-md  w-full mx-auto bg-slate-800 py-2 px-4 flex items-center justify-center gap-2 border  border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg  active:bg-slate-700 hover:bg-slate-700 "
