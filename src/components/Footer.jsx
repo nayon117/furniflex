@@ -83,7 +83,7 @@ const Footer = () => {
           </div>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-        <div className="sm:flex sm:items-center sm:justify-between">
+        <div className="sm:flex sm:items-center sm:justify-between gap-6">
           <div className="flex items-center gap-3">
             <FaFacebook size={20} className="text-[#81859F]" />
             <FaInstagram size={20} className="text-[#81859F]" />

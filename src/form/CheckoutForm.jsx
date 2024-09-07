@@ -89,7 +89,7 @@ const CheckoutForm = ({ itemInfo, closeModal }) => {
         await saveItemInfo(paymentInfo);
         const text = `Payment Successful! ${paymentIntent.id}`;
         toast.success(text);
-        navigate('/');
+        navigate('/success');
       } catch (error) {
         console.log(error);
         toast.error(error.message);

@@ -5,12 +5,13 @@ import SignUp from "../pages/SignUp";
 import SignIn from "../pages/SignIn";
 import Cart from "../pages/Cart";
 import PaymentSucess from "../pages/PaymentSucess";
+import PrivateRoute from "./PrivateRoute";
 
 
 const Route = createBrowserRouter ([
     {
         path: "/",
-        element:<MainLayout/>,
+        element:<PrivateRoute><MainLayout/></PrivateRoute>,
         errorElement: <h1>404 Not Found</h1>,
         children:[
             {

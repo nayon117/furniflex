@@ -1,175 +1,150 @@
+import  { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
-import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
-// import { saveUser } from "../api/auth";
+import { FaApple } from 'react-icons/fa';
 
 const SignUp = () => {
   const navigate = useNavigate();
   const { createUser, signInWithGoogle, loading } = useAuth() || {};
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const [showPassword, setShowPassword] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevState) => !prevState);
-  };
+  const togglePasswordVisibility = () => setShowPassword(prev => !prev);
 
   const onSubmit = async (data) => {
     try {
-      const result = await createUser(data.email, data.password);
-    //   const databaseResponse = await saveUser(result?.user);
-      console.log(result);
+      await createUser(data.email, data.password);
       toast.success("Sign up successful");
       navigate("/");
     } catch (error) {
-      console.log(error.message);
+      console.error(error);
       toast.error(error?.message);
     }
   };
 
   const handleGoogleLogin = async () => {
     try {
-      const result = await signInWithGoogle();
-    //   const dbResponse = await saveUser(result?.user);
-      console.log(result);
+      await signInWithGoogle();
       navigate("/");
       toast.success("Sign up successful");
     } catch (error) {
-      console.log(error);
+      console.error(error);
       toast.error(error?.message);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Create your account
-          </h2>
-        </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-6">
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div>
-              <label htmlFor="name" className="sr-only">
-                Name
-              </label>
+    <div className="flex min-h-screen overflow-hidden">
+      <div className="flex-1 flex items-center justify-center p-4 sm:p-8">
+        <div className="w-full max-w-md">
+          <h1 className="text-3xl font-bold mb-2">Welcome To</h1>
+          <h2 className="text-4xl font-bold text-blue-600 mb-6">FurniFlex</h2>
+          <p className="text-gray-600 mb-8">Signup for purchase your desire products</p>
+          
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <input
-                id="name"
-                name="name"
-                type="text"
-                {...register("name", { required: true })}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Your Name"
+                {...register("firstname")}
+                className="flex-1 p-2 border rounded"
+                placeholder="First name (optional)"
               />
-              {errors.name && (
-                <p className="mt-2 text-sm text-red-600">Name is required</p>
-              )}
-            </div>
-            <div>
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
               <input
-                id="email-address"
-                name="email"
-                type="email"
-                {...register("email", { required: true })}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Email address"
+                {...register("lastname")}
+                className="flex-1 p-2 border rounded"
+                placeholder="Last name (optional)"
               />
-              {errors.email && (
-                <p className="mt-2 text-sm text-red-600">Email is required</p>
-              )}
             </div>
+            <input
+              {...register("email", { required: true })}
+              className="w-full p-2 border rounded"
+              placeholder="Email address"
+              type="email"
+            />
+            {errors.email && <p className="text-red-500 text-sm">Email is required</p>}
             <div className="relative">
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
               <input
-                id="password"
-                name="password"
-                type={showPassword ? "text" : "password"}
                 {...register("password", { required: true, minLength: 6 })}
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="w-full p-2 border rounded pr-10"
                 placeholder="Password"
+                type={showPassword ? "text" : "password"}
               />
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center"
               >
-                {showPassword ? (
-                  <BsEyeSlash className="h-5 w-5 text-gray-400" />
-                ) : (
-                  <BsEye className="h-5 w-5 text-gray-400" />
-                )}
+                {showPassword ? <BsEyeSlash /> : <BsEye />}
               </button>
             </div>
-          </div>
-          {errors.password && (
-            <p className="mt-2 text-sm text-red-600">
-              {errors.password.type === "required"
-                ? "Password is required"
-                : "Password must be at least 6 characters long"}
-            </p>
-          )}
-
-          <div>
+            {errors.password && (
+              <p className="text-red-500 text-sm">
+                {errors.password.type === "required"
+                  ? "Password is required"
+                  : "Password must be at least 6 characters long"}
+              </p>
+            )}
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                {...register("terms", { required: true })}
+                className="mr-2"
+              />
+              <label className="text-sm">I agree to the Terms & Policy</label>
+            </div>
+            {errors.terms && <p className="text-red-500 text-sm">You must agree to the terms</p>}
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="w-full bg-black text-white p-2 rounded font-bold"
+              disabled={loading}
             >
-              {loading ? (
-                <TbFidgetSpinner className="animate-spin h-5 w-5 mr-3" />
-              ) : (
-                "Sign up"
-              )}
+              {loading ? <TbFidgetSpinner className="animate-spin mx-auto" /> : "Signup"}
             </button>
-          </div>
-        </form>
-
-        <div className="mt-6">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-gray-50 text-gray-500">
-                Or continue with
-              </span>
-            </div>
-          </div>
-
-          <div className="mt-6">
+          </form>
+          
+          <div className="mt-4 text-center">or</div>
+          
+          <div className="mt-4 flex space-x-4">
             <button
               onClick={handleGoogleLogin}
-              className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="flex-1 border border-gray-300 p-2 rounded flex items-center justify-center"
             >
-              <FcGoogle className="h-5 w-5 mr-2" />
-              Sign up with Google
+              <FcGoogle className="mr-2" />Sign in with Google
+            </button>
+            <button className="flex-1 border border-gray-300 p-2 rounded flex items-center justify-center">
+              <FaApple alt="Apple" className="w-5 h-5 mr-2" />Sign in with Apple
             </button>
           </div>
+          
+          <p className="mt-4 text-center">
+            Have an account? <Link to="/sign-in" className="text-blue-600">Sign In</Link>
+          </p>
         </div>
-
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Already have an account?{" "}
-          <Link
-            to="/sign-in"
-            className="font-medium text-indigo-600 hover:text-indigo-500"
-          >
-            Login
-          </Link>
-        </p>
+      </div>
+      
+      <div className="flex-1 relative hidden lg:block">
+        <img 
+          src="/login.png" 
+          alt="Furniture" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center p-8">
+          <div className="text-white text-center">
+            <div className="mb-4">
+              <span className="inline-block bg-blue-500 rounded-full p-3">
+                <span className="text-4xl font-bold">F</span>
+              </span>
+            </div>
+            <h3 className="text-3xl font-bold mb-4">FurniFlex</h3>
+            <p className="text-lg">
+              Discover a seamless shopping experience with our curated collection of products. From fashion to electronics, we bring quality.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

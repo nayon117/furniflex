@@ -11,11 +11,11 @@ const PaymentSucess = () => {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-5">
-      <p className="font-bold text-green-700">Successful Payment</p>
+      <p className="font-bold text-xl text-green-700">Successful Payment</p>
       <p>Thank you for your purchase</p>
       <Link
         href="/"
-        className="border p-4 font-bold hover:bg-black hover:text-white"
+        className="border px-3 py-2 rounded-md font-bold bg-black hover:bg-gray-600 text-white"
       >
         CONTINUE TO SHOPPING
       </Link>
