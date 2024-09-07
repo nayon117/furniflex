@@ -10,7 +10,7 @@ const useCart = create(
 
       // Function to add an item to the cart
       addItem: (data) => {
-        const { id, title, imgSrc, price } = data;
+        const { id, title, image, price,description } = data;
         const currentItems = get().cartItems;
         const isExisting = currentItems.find((cartItem) => cartItem.id === id);
 
@@ -23,7 +23,7 @@ const useCart = create(
         set((state) => ({
           cartItems: [
             ...state.cartItems,
-            { id, title, price, imgSrc, quantity: 1 },
+            { id, title, price, image,description, quantity: 1 },
           ],
         }));
         toast.success("Item added to cart", { icon: "🛒" });
